@@ -22,5 +22,14 @@
   "bugs": {
     "url": "https://github.com/nextsigner/mercurio-server/issues"
   },
-  "homepage": "https://github.com/nextsigner/mercurio-server#readme"
+  "homepage": "https://github.com/nextsigner/mercurio-server#readme",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "connect": "^3.7.0",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "nodemailer": "^6.4.6",
+    "path": "^0.12.7",
+    "serve-static": "^1.14.1"
+  }
 }
