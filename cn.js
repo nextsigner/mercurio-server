@@ -29,6 +29,7 @@ module.exports=function(app, adminEmail, adminEmailPass){
     var cp
     function getJsonCN(v1, v2, v3, v4, v5, v6, v7, v8, v9){
         console.log("Creando carta natal...");
+        //enviarCorreo('qtpizarro@gmail.com', ,s,d)
         //cp = spawn('/media/nextsigner/ZONA-A11/nsp/unik-dev-apps/zodiacserver/bin/zodiac_server', ['fileName', '1975', '6', '20', '22', '00', '-3', '-35.484462', '-69.5797495', __dirname+'/bios-files/data.json']);
 
     }
