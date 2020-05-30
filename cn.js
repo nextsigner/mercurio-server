@@ -58,7 +58,7 @@ module.exports=function(app, adminEmail, adminEmailPass){
             //console.log(data.toString().trim());
             if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
                 console.log('Response code 0')
-                res.status(200).send(o)
+                //res.status(200).send(o)
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
                 console.error(data.toString());
@@ -69,7 +69,7 @@ module.exports=function(app, adminEmail, adminEmailPass){
             //console.error(data.toString());
             if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
                 console.log('Response code 1')
-                res.status(200).send(o)
+                //res.status(200).send(o)
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
                 console.error(data.toString());
