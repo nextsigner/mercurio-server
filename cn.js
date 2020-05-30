@@ -52,11 +52,13 @@ module.exports=function(app, adminEmail, adminEmailPass){
         let ms=date.getTime()
         let fn=__dirname+'/files/'+ms+'_'+v1+'.json'
         console.log('Get new cn: '+v1+' '+v2+' '+v3+' '+v4+' '+v5+' '+v6+' '+v7+' '+v8+' '+v9+' '+v10+' '+fn+' '+ms)
+        let o={'file':''+ms+'_'+v1}
         cp = spawn('/root/mercurio-server/zodiacserver/bin/zodiac_server', [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms]);
         cp.stdout.on("data", function(data) {
             //console.log(data.toString().trim());
             if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
-                res.status(200).send({'file':''+ms+'_'+v1})
+                console.log('Response code 0')
+                res.status(200).send(o)
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
                 console.error(data.toString());
@@ -65,7 +67,8 @@ module.exports=function(app, adminEmail, adminEmailPass){
         cp.stderr.on("data", function(data) {
             //console.error(data.toString());
             if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
-                res.status(200).send({'file':''+ms+'_'+v1})
+                console.log('Response code 1')
+                res.status(200).send(o)
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
                 console.error(data.toString());
