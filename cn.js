@@ -62,6 +62,7 @@ module.exports=function(app, adminEmail, adminEmailPass){
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
                 console.error(data.toString());
+                res.status(200).send(o)
             }
         });
         cp.stderr.on("data", function(data) {
@@ -72,6 +73,7 @@ module.exports=function(app, adminEmail, adminEmailPass){
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
                 console.error(data.toString());
+                res.status(200).send(o)
             }
         });
     }
