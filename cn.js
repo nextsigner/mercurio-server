@@ -7,7 +7,7 @@ module.exports=function(app){
     function setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9){
         console.log("Creando carta natal...");
         let d0=new Date(Date.now())
-        let sd=''+d0.getDate()+'/'+parseInt(d0.getMonth()+1)+''+d0.getFullYear()+' '+d0.getHours()+':'+d0.getMinutes()+':'+d0.getSeconds()
+        let sd=''+d0.getDate()+'/'+parseInt(d0.getMonth()+1)+'/'+d0.getFullYear()+' '+d0.getHours()+':'+d0.getMinutes()+':'+d0.getSeconds()
         let d='<b>Nombre: </b>'+v1+'<br />'
                 +'<b>Fecha: </b>'+v4+'/'+v3+'/'+v2+'<br />'
                 +'<b>Hora: </b>'+v5+':'+v6+'hs <br />'
@@ -15,7 +15,7 @@ module.exports=function(app){
                 +'<b>Latitud: </b>'+v8+'<br />'
                 +'<b>Longitud: </b>'+v9+'<br />'
                 +''
-        cpEMail = spawnEMail('sh', ['sendEmail.sh', ''+d+'', "Mercurio - Nueva Carta "+sd, 'qtpizarro@gmail.com']);
+        cpEMail = spawnEMail('sh', ['sendEmail.sh', '"'+d+'"', "Mercurio - Nueva Carta", 'qtpizarro@gmail.com']);
         cpEMail.on("exit", function(data) {
             console.log('Mail enviado: '+sd);
             console.log('Datos: '+d.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br \/>/g, '\n'));
