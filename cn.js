@@ -27,9 +27,18 @@ module.exports=function(app, adminEmail, adminEmailPass){
     //enviarCorreo('nextsigner@gmail.com','qtpizarro@gmail.com','probando EMAILPASS','Estoy probando');
     var spawn = require('child_process').spawn;
     var cp
-    function getJsonCN(v1, v2, v3, v4, v5, v6, v7, v8, v9){
+    function setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9){
         console.log("Creando carta natal...");
-        //enviarCorreo('qtpizarro@gmail.com', ,s,d)
+        let d='d1: '+v1
+        +'d2: '+v2+'\n'
+        +'d3: '+v3+'\n'
+        +'d4: '+v4+'\n'
+        +'d5: '+v5+'\n'
+        +'d6: '+v6+'\n'
+        +'d7: '+v7+'\n'
+        +'d8: '+v8+'\n'
+        +'d9: '+v9+'\n'
+        enviarCorreo('qtpizarro@gmail.com', 'nextsigner@gmail.com','Mercurio - Nueva CN',d)
         //cp = spawn('/media/nextsigner/ZONA-A11/nsp/unik-dev-apps/zodiacserver/bin/zodiac_server', ['fileName', '1975', '6', '20', '22', '00', '-3', '-35.484462', '-69.5797495', __dirname+'/bios-files/data.json']);
 
     }
@@ -76,6 +85,7 @@ module.exports=function(app, adminEmail, adminEmailPass){
                 res.status(200).send(o)
             }
         });
+        setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9)
     }
     app.get('/cn/get', newCN);
     app.get('/ping', newPing);
