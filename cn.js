@@ -4,6 +4,7 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
     var transporter = nodemailer.createTransport ({
                                                       port: 587,
                                                       secure: false,
+                                                      host: 'smtp.gmail.com ',
                                                       service: emailService,
                                                       auth: {
                                                           user: adminEmail,
