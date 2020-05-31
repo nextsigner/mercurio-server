@@ -1,6 +1,30 @@
 module.exports=function(app, adminEmail, adminEmailPass, emailService){
 
     var nodemailer = require('nodemailer');
+
+    var transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'nextsigner@gmail.com',
+        pass: '352Gallardo352'
+      }
+    });
+
+    var mailOptions = {
+      from: 'nextsigner@gmail.com',
+      to: 'qtpizarro@gmail.com',
+      subject: 'Sending Email using Node.js',
+      text: 'That was easy!'
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
+    /*var nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport ({
                                                       //port: 587,
                                                       //secure: false,
@@ -13,9 +37,9 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
                                                           user: adminEmail,
                                                           pass: adminEmailPass
                                                       }
-                                                  });
+                                                  });*/
     function enviarCorreo(f,t,s,d){
-        const mailOptions = {
+        /*const mailOptions = {
             from: f,
             to: t,
             subject:s,
@@ -28,7 +52,7 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
             }else{
                 console.log (info);
             }
-        });
+        });*/
     }
 
     //Probar Email (hay que tener exportado la variable de entorno EMAILPASS)
