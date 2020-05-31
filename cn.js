@@ -1,62 +1,4 @@
-module.exports=function(app, adminEmail, adminEmailPass, emailService){
-
-    var nodemailer = require('nodemailer');
-
-    var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'nextsigner@gmail.com',
-        pass: '352Gallardo352'
-      }
-    });
-
-    var mailOptions = {
-      from: 'nextsigner@gmail.com',
-      to: 'qtpizarro@gmail.com',
-      subject: 'Sending Email using Node.js',
-      text: 'That was easy!'
-    };
-
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-    /*var nodemailer = require('nodemailer');
-    var transporter = nodemailer.createTransport ({
-                                                      //port: 587,
-                                                      //secure: false,
-                                                      //host: 'smtp.gmail.com ',
-                                                      host: 'smtp.gmail.com',
-                                                      port: 465,
-                                                      secure: true, // true for 465, false for other ports
-                                                      //service: emailService,
-                                                      auth: {
-                                                          user: adminEmail,
-                                                          pass: adminEmailPass
-                                                      }
-                                                  });*/
-    function enviarCorreo(f,t,s,d){
-        /*const mailOptions = {
-            from: f,
-            to: t,
-            subject:s,
-            text: d
-        };
-        transporter.sendMail (mailOptions, function (err, info) {
-            console.log ('User: '+adminEmail+' Key: '+adminEmailPass+' SERVICE: '+emailService)
-            if (err){
-                console.log (err)
-            }else{
-                console.log (info);
-            }
-        });*/
-    }
-
-    //Probar Email (hay que tener exportado la variable de entorno EMAILPASS)
-    //enviarCorreo('nextsigner@gmail.com','qtpizarro@gmail.com','probando EMAILPASS','Estoy probando');
+module.exports=function(app){
     var spawn = require('child_process').spawn;
     var cp
     function setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9){
@@ -70,9 +12,13 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
         //        +'d7: '+v7+'\n'
         //        +'d8: '+v8+'\n'
         //        +'d9: '+v9+'\n'
-        enviarCorreo(adminEmail, 'qtpizarro@gmail.com', 'Mercurio - Nueva CN',d)
-        //cp = spawn('/media/nextsigner/ZONA-A11/nsp/unik-dev-apps/zodiacserver/bin/zodiac_server', ['fileName', '1975', '6', '20', '22', '00', '-3', '-35.484462', '-69.5797495', __dirname+'/bios-files/data.json']);
-
+        cp = spawn('mail', ['-s', 'Mercurio - Nueva Carta', 'nextsigner@gmail.com', '<<<', d]);
+        cp.std.on("data", function(data) {
+            console.error(data.toString());
+        });
+        cp.stderr.on("data", function(data) {
+            console.error(data.toString());
+        });
     }
 
     newPing = function(req, res){

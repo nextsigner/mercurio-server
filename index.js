@@ -41,7 +41,7 @@ app.set('port', process.env.PORT || puertoApp);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-require('./cn')(app, serverEmail, serverEmailPass, serverEmailService);
+require('./cn')(app);
 
 var spawn = require('child_process').spawn;
 function gtcProbe(){
