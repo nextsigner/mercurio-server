@@ -44,7 +44,6 @@ module.exports=function(app){
         let fn=__dirname+'/files/'+ms+'_'+v1+'.json'
         console.log('Get new cn: '+v1+' '+v2+' '+v3+' '+v4+' '+v5+' '+v6+' '+v7+' '+v8+' '+v9+' '+v10+' '+fn+' '+ms)
         let o={'file':''+ms+'_'+v1}
-        let oe={'file':''+ms+'_error'}
         cp = spawn('/root/mercurio-server/zodiacserver/bin/zodiac_server', [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms]);
         cp.stdout.on("data", function(data) {
             if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
@@ -62,8 +61,9 @@ module.exports=function(app){
                 //res.status(200).send(o)
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
-                console.log('Sistema Mercurio Error: '+data.toString());
-                res.status(200).send(oe)
+                //Zodiac devuelve salida por qDebug() como error.
+                console.log('Sistema Mercurio: '+data.toString());
+                res.status(200).send(o)
             }
         });
         setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9)
