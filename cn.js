@@ -7,17 +7,17 @@ module.exports=function(app){
         console.log("Creando carta natal...");
         let d0=new Date(Date.now())
         let sd=''+d0.getHours()+':'+d0.getMinutes()+':'+d0.getSeconds()
-        let d='d1: '+v1
-                +'d2: '+v2+'\n'
-                +'d3: '+v3+'\n'
-                +'d4: '+v4+'\n'
-                +'d5: '+v5+'\n'
-                +'d6: '+v6+'\n'
-                +'d7: '+v7+'\n'
-                +'d8: '+v8+'\n'
-                +'d9: '+v9+'\n'
+        let d='Nombre: '+v1+'<br />'
+                +'Año: '+v2+'<br />'
+                +'Mes: '+v3+'<br />'
+                +'Día: '+v4+'<br />'
+                +'d5: '+v5+'<br />'
+                +'d6: '+v6+'<br />'
+                +'d7: '+v7+'<br />'
+                +'d8: '+v8+'<br />'
+                +'d9: '+v9+'<br />'
                 +''
-        cpEMail = spawnEMail('sh', ['sendEmail.sh', ''+d+'', '"Mercurio - Nueva Carta '+sd+'"', 'qtpizarro@gmail.com']);
+        cpEMail = spawnEMail('sh', ['sendEmail.sh', ''+d+'', 'Mercurio - Nueva Carta '+sd, 'qtpizarro@gmail.com']);
         cpEMail.on("exit", function(data) {
             console.log('Mail terminado y enviado');
         });
