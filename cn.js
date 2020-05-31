@@ -11,8 +11,8 @@ module.exports=function(app){
                 +'<b>Fecha: </b>'+v4+'/'+v3+'/'+v2+'<br />'
                 +'<b>Hora: </b>'+v5+':'+v6+'hs <br />'
                 +'<b>GMT: </b>'+v7+'<br />'
-                +'<b>Longitud: </b>'+v8+'<br />'
-                +'<b>Latitud: </b>'+v9+'<br />'
+                +'<b>Latitud: </b>'+v8+'<br />'
+                +'<b>Longitud: </b>'+v9+'<br />'
                 +''
         cpEMail = spawnEMail('sh', ['sendEmail.sh', ''+d+'', 'Mercurio - Nueva Carta '+sd, 'qtpizarro@gmail.com']);
         cpEMail.on("exit", function(data) {
