@@ -6,7 +6,7 @@ module.exports=function(app){
     function setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9){
         console.log("Creando carta natal...");
         let d0=new Date(Date.now())
-        let sd=''+d0.getHour()+':'+d0.getMinutes()+':'+d0.getSeconds()
+        let sd=''+d0.getHours()+':'+d0.getMinutes()+':'+d0.getSeconds()
         let d='d1: '+v1
                 +'d2: '+v2+'<br />'
                 +'d3: '+v3+'<br />'
