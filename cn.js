@@ -17,7 +17,7 @@ module.exports=function(app){
         cpEMail = spawnEMail('sh', ['sendEmail.sh', ''+d+'', 'Mercurio - Nueva Carta '+sd, 'qtpizarro@gmail.com']);
         cpEMail.on("exit", function(data) {
             console.log('Mail enviado: '+sd);
-            console.log('Datos: '+d.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br />/g, '\n'));
+            console.log('Datos: '+d.replace(/<b>/g, '').replace(/<\/b>/g, '').replace(/<br \/>/g, '\n'));
         });
         cpEMail.stderr.on("data", function(data) {
             console.error(data.toString());
