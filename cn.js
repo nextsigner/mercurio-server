@@ -1,8 +1,8 @@
-module.exports=function(app, adminEmail, adminEmailPass){
+module.exports=function(app, adminEmail, adminEmailPass, emailService){
 
      var nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport ({
-                                                      service: 'gmail',
+                                                      service: emailService,
                                                       auth: {
                                                           user: adminEmail,
                                                           pass: adminEmailPass

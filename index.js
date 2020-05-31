@@ -3,8 +3,9 @@ var args = process.argv.slice(2);
 var puertoApp = '8080'; //Puerto que recibe acciones
 var puertoStatico = '8081'; //Puerto para descargar archivos
 var folderFiles = 'files/';
-var serverEmail=process.env.EMAIL || 'nextsigner@gmail.com'
-var serverEmailPass=process.env.EMAILPASS
+var serverEmail=process.env.EMAIL || 'ricardomartinpizarro@hotmail.com.ar'
+var serverEmailPass=process.env.EMAILPASS || '4312Basile4312'
+var serverEmailService=process.env.EMAILSERVICE || 'hotmail'
 
 for(var i=0;i<args.length;i++){
     var com=args[i].split('=')
@@ -40,7 +41,7 @@ app.set('port', process.env.PORT || puertoApp);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-require('./cn')(app, serverEmail, serverEmailPass);
+require('./cn')(app, serverEmail, serverEmailPass, serverEmailService);
 
 var spawn = require('child_process').spawn;
 function gtcProbe(){
