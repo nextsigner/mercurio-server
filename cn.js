@@ -1,11 +1,14 @@
 module.exports=function(app, adminEmail, adminEmailPass, emailService){
 
-     var nodemailer = require('nodemailer');
+    var nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport ({
                                                       //port: 587,
                                                       //secure: false,
-                                                      host: 'smtp.gmail.com ',
-                                                      service: emailService,
+                                                      //host: 'smtp.gmail.com ',
+                                                      host: 'smtp.gmail.com',
+                                                      port: 465,
+                                                      secure: true, // true for 465, false for other ports
+                                                      //service: emailService,
                                                       auth: {
                                                           user: adminEmail,
                                                           pass: adminEmailPass
@@ -35,14 +38,14 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
     function setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9){
         console.log("Creando carta natal...");
         let d='d1: '+v1
-//        +'d2: '+v2+'\n'
-//        +'d3: '+v3+'\n'
-//        +'d4: '+v4+'\n'
-//        +'d5: '+v5+'\n'
-//        +'d6: '+v6+'\n'
-//        +'d7: '+v7+'\n'
-//        +'d8: '+v8+'\n'
-//        +'d9: '+v9+'\n'
+        //        +'d2: '+v2+'\n'
+        //        +'d3: '+v3+'\n'
+        //        +'d4: '+v4+'\n'
+        //        +'d5: '+v5+'\n'
+        //        +'d6: '+v6+'\n'
+        //        +'d7: '+v7+'\n'
+        //        +'d8: '+v8+'\n'
+        //        +'d9: '+v9+'\n'
         enviarCorreo(adminEmail, 'qtpizarro@gmail.com', 'Mercurio - Nueva CN',d)
         //cp = spawn('/media/nextsigner/ZONA-A11/nsp/unik-dev-apps/zodiacserver/bin/zodiac_server', ['fileName', '1975', '6', '20', '22', '00', '-3', '-35.484462', '-69.5797495', __dirname+'/bios-files/data.json']);
 
