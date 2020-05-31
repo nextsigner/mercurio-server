@@ -3,6 +3,8 @@ module.exports=function(app){
     var spawnEMail = require('child_process').spawn;
     var cp
     var cpEMail
+
+    var resJsonSended=false;
     function setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9){
         console.log("Creando carta natal...");
         let d0=new Date(Date.now())
@@ -43,27 +45,41 @@ module.exports=function(app){
         let fn=__dirname+'/files/'+ms+'_'+v1+'.json'
         console.log('Get new cn: '+v1+' '+v2+' '+v3+' '+v4+' '+v5+' '+v6+' '+v7+' '+v8+' '+v9+' '+v10+' '+fn+' '+ms)
         let o={'file':''+ms+'_'+v1}
+        let oe={'file':''+ms+'_error'}
+        resJsonSended=false;
         cp = spawn('/root/mercurio-server/zodiacserver/bin/zodiac_server', [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms]);
         cp.stdout.on("data", function(data) {
             //console.log(data.toString().trim());
             if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
-                console.log('Response code 0')
-                //res.status(200).send(o)
+                //console.log('Response code 0')
+                if(!resJsonSended){
+                    resJsonSended=true
+                    res.status(200).send(o)
+                }
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
                 console.error(data.toString());
-                res.status(200).send(o)
+                if(!resJsonSended){
+                    resJsonSended=true
+                    res.status(200).send(o)
+                }
             }
         });
         cp.stderr.on("data", function(data) {
             //console.error(data.toString());
             if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
-                console.log('Response code 1')
-                //res.status(200).send(o)
+                //console.log('Response code 1')
+                if(!resJsonSended){
+                    resJsonSended=true
+                    res.status(200).send(oe)
+                }
             }
             if(data.toString().trim().indexOf('Saving json file')>=0){
                 console.error(data.toString());
-                res.status(200).send(o)
+                if(!resJsonSended){
+                    resJsonSended=true
+                    res.status(200).send(oe)
+                }
             }
         });
         setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9)
