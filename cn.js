@@ -12,7 +12,7 @@ module.exports=function(app){
         //        +'d7: '+v7+'\n'
         //        +'d8: '+v8+'\n'
         //        +'d9: '+v9+'\n'
-        cp = spawn('mail', ['-s', 'Mercurio - Nueva Carta', 'nextsigner@gmail.com', '<<<', d]);
+        cp = spawn('mail', ['-s', 'Mercurio - Nueva Carta', 'nextsigner@gmail.com', '<<<', '"'+d+'"']);
         cp.std.on("data", function(data) {
             console.error(data.toString());
         });
