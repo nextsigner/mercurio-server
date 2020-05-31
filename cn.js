@@ -38,7 +38,7 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
         +'d7: '+v7+'\n'
         +'d8: '+v8+'\n'
         +'d9: '+v9+'\n'
-        enviarCorreo('nextsigner@gmail.com', 'qtpizarro@gmail.com', 'Mercurio - Nueva CN',d)
+        enviarCorreo(adminEmail, 'qtpizarro@gmail.com', 'Mercurio - Nueva CN',d)
         //cp = spawn('/media/nextsigner/ZONA-A11/nsp/unik-dev-apps/zodiacserver/bin/zodiac_server', ['fileName', '1975', '6', '20', '22', '00', '-3', '-35.484462', '-69.5797495', __dirname+'/bios-files/data.json']);
 
     }
