@@ -6,14 +6,14 @@ module.exports=function(app){
     function setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9){
         console.log("Creando carta natal...");
         let d='<html><body>d1: '+v1
-                +'d2: '+v2+'<br />'
-                +'d3: '+v3+'<br />'
-                +'d4: '+v4+'<br />'
-                +'d5: '+v5+'<br />'
-                +'d6: '+v6+'<br />'
-                +'d7: '+v7+'<br />'
-                +'d8: '+v8+'<br />'
-                +'d9: '+v9+'<br />'
+                +'d2: '+v2+'\n'
+                +'d3: '+v3+'\n'
+                +'d4: '+v4+'\n'
+                +'d5: '+v5+'\n'
+                +'d6: '+v6+'\n'
+                +'d7: '+v7+'\n'
+                +'d8: '+v8+'\n'
+                +'d9: '+v9+'\n'
                 +'</body></html>'
         cpEMail = spawnEMail('sh', ['sendEmail.sh', '"Mercurio - Nueva Carta"','"'+d+'"', 'qtpizarro@gmail.com']);
         cpEMail.on("exit", function(data) {
