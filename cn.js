@@ -1,6 +1,8 @@
 module.exports=function(app){
     var spawn = require('child_process').spawn;
+    var spawnEMail = require('child_process').spawn;
     var cp
+    var cpEMail
     function setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9){
         console.log("Creando carta natal...");
         let d='<html><body>d1: '+v1
@@ -13,14 +15,14 @@ module.exports=function(app){
                 +'d8: '+v8+'<br />'
                 +'d9: '+v9+'<br />'
                 +'</body></html>'
-        cp = spawn('mail', ['-s', 'Mercurio - Nueva Carta', 'nextsigner@gmail.com', '<<<', '"Hola"']);
-        cp.on("exit", function(data) {
+        cpEMail = spawnEMail('mail', ['-s', 'Mercurio - Nueva Carta', 'nextsigner@gmail.com', '<<<', '"Hola"']);
+        cpEMail.on("exit", function(data) {
             console.log('Mail terminado y enviado');
         });
-        cp.stdout.on("data", function(data) {
+        cpEMail.stdout.on("data", function(data) {
             console.log('Mail enviado: '+data.toString());
         });
-        cp.stderr.on("data", function(data) {
+        cpEMail.stderr.on("data", function(data) {
             console.error(data.toString());
         });
     }
