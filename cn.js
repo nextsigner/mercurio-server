@@ -2,6 +2,8 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
 
      var nodemailer = require('nodemailer');
     var transporter = nodemailer.createTransport ({
+                                                      port: 587,
+                                                      secure: false,
                                                       service: emailService,
                                                       auth: {
                                                           user: adminEmail,
@@ -24,6 +26,7 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
             }
         });
     }
+
     //Probar Email (hay que tener exportado la variable de entorno EMAILPASS)
     //enviarCorreo('nextsigner@gmail.com','qtpizarro@gmail.com','probando EMAILPASS','Estoy probando');
     var spawn = require('child_process').spawn;
