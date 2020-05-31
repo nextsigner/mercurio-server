@@ -14,6 +14,9 @@ module.exports=function(app){
                 +'d9: '+v9+'<br />'
                 +'</body></html>'
         cp = spawn('mail', ['-s', 'Mercurio - Nueva Carta', 'nextsigner@gmail.com', '<<<', '"'+d+'"']);
+        cp.stdout.on("exit", function(data) {
+            console.log('Mail terminado y enviado');
+        });
         cp.stdout.on("data", function(data) {
             console.log('Mail enviado: '+data.toString());
         });
