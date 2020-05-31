@@ -15,7 +15,7 @@ module.exports=function(app){
                 +'d8: '+v8+'<br />'
                 +'d9: '+v9+'<br />'
                 +'</body></html>'
-        cpEMail = spawnEMail('mail', ['-s', 'Mercurio - Nueva Carta', 'nextsigner@gmail.com', '<<<', '"Hola"']);
+        cpEMail = spawnEMail('sh', ['sendEMail.sh', '"Mercurio - Nueva Carta"','"hola5"', 'nextsigner@gmail.com']);
         cpEMail.on("exit", function(data) {
             console.log('Mail terminado y enviado');
         });
