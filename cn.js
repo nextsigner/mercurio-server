@@ -16,6 +16,7 @@ module.exports=function(app, adminEmail, adminEmailPass, emailService){
             text: d
         };
         transporter.sendMail (mailOptions, function (err, info) {
+            console.log ('User: '+adminEmail+' Key: '+adminEmailPass+' SERVICE: '+emailService)
             if (err){
                 console.log (err)
             }else{
