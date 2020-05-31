@@ -1,0 +1,35 @@
+Cloud Información
+
+Plataforma: Linux
+
+Distribución: Ubuntu 16.04
+
+Arquitectura: 64 bits
+
+PROTOCOLO	PUERTO	IP
+TCP	5901	::/0
+TCP	8081	0.0.0.0/0
+TCP	587	0.0.0.0/0
+TCP	80	::/0
+TCP	80	0.0.0.0/0
+TCP	465	::/0
+TCP	8081	::/0
+TCP	465	0.0.0.0/0
+TCP	5901	0.0.0.0/0
+TCP	587	::/0
+TCP	443	::/0
+TCP	8080	0.0.0.0/0
+TCP	8080	::/0
+TCP	5560	::/0
+TCP	443	0.0.0.0/0
+TCP	5560	0.0.0.0/0
+
+Node Versión:  v14.3.0
+NPM Versión: v6.14.5
+
+Para instalar todo lo necesario hay que ejecutar install.sh
+
+
+El envio del email se realiza mediante el script sendEmail.sh
+
+El script sendEmail.sh necesita tener instalado mail
