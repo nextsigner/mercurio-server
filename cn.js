@@ -44,7 +44,7 @@ module.exports=function(app){
         let fn=__dirname+'/files/'+ms+'_'+v1+'.json'
         console.log('Get new cn: '+v1+' '+v2+' '+v3+' '+v4+' '+v5+' '+v6+' '+v7+' '+v8+' '+v9+' '+v10+' '+fn+' '+ms)
         let o={'file':''+ms+'_'+v1}
-        cp = spawn('/root/mercurio-server/zodiacserver/bin/zodiac_server', [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms]);
+        cp = spawn('/root/mercurio-server/zodiacserver/bin/zodiac_server', [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms, '10', '/root/mercurio-server/files/'+ms+'_'+v1+'.png']);
         cp.stdout.on("data", function(data) {
             if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
                 console.log('Sistema Mercurio: '+data.toString());
