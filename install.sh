@@ -16,3 +16,6 @@ git clone https://github.com/nextsigner/zodiacserver.git
 sudo apt install xfce4 xfce4-goodies gnome-icon-theme tightvncserver qt5declarative qtcreators
 
 vncserver
+sudo chmod +x /etc/init.d/vncserver
+sudo update-rc.d vncserver defaults
+vncserver :1 -geometry 1920x1080
