@@ -1,0 +1,38 @@
+#!/bin/sh
+# kFreeBSD do not accept scripts as interpreters, using #!/bin/sh and sourcing.
+if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
+    set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
+fi
+### BEGIN INIT INFO
+# Provides:          mercurio
+# Required-Start:    networking
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     S
+# Default-Stop:      0 6
+# Short-Description: Init Mercurio Server NodeJS with forever
+# Description:       This file should be used to run scripts to
+#                    work the Mercurio Server.
+### END INIT INFO
+
+
+. /lib/lsb/init-functions
+
+case "$1" in
+start)
+log_action_begin_msg "Starting vncserver for user '${USER}' on localhost:${DISPLAY}"
+su root -c "nodejs /root/mercurio-server/index.js"
+;;
+
+stop)
+log_action_begin_msg "Stoping vncserver for user '${USER}' on localhost:${DISPLAY}"
+su root -c "killall nodejs"
+;;
+
+restart)
+$0 stop
+$0 start
+;;
+esac
+
+exit 0
+
