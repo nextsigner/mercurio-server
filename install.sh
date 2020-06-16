@@ -18,4 +18,4 @@ sudo apt install xfce4 xfce4-goodies gnome-icon-theme tightvncserver qt5declarat
 sudo cp vncserver.sh /etc/init.d/vncserver.sh
 sudo chmod +x /etc/init.d/vncserver.sh
 sudo update-rc.d vncserver.sh defaults
-vncserver :1 -geometry 1920x1080
+
