@@ -33,3 +33,5 @@ sudo chmod +x /etc/init.d/mercurio
 sudo update-rc.d mercurio defaults
 
 vncserver
+
+echo "Mercurio dice: Conectar con Vnc Viewer server_ip:5901"
