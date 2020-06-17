@@ -1,5 +1,4 @@
 #!/bin/bash
-cd /root
 sudo mkdir files
 sudo chmod -R 755 files
 
@@ -7,7 +6,11 @@ sudo chmod -R 755 files
 git clone https://github.com/nextsigner/zodiacserver.git
 
 #Instalando entorno de escritorio y aplicaciones necesarias para zodiacserver
-sudo apt install xfce4 xfce4-goodies gnome-icon-theme tightvncserver nodejs qt5declarative qtcreators
+sudo apt-get install nano xfce4 xfce4-goodies gnome-icon-theme tightvncserver nodejs qtquick1-5-dev qtscript5-dev
+
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+sudo apt-get install -y nodejs 
+sudo apt-get install -y npm
 
 echo "install.sh copiando archivo /etc/init.d/vncserver..."
 sudo cp vncserver /etc/init.d/vncserver
@@ -19,3 +22,4 @@ sudo cp vncserver /etc/init.d/mercurio
 sudo chmod +x /etc/init.d/mercurio
 sudo update-rc.d mercurio defaults
 
+vncserver
