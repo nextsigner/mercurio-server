@@ -28,11 +28,12 @@ sudo chmod +x /etc/init.d/vncserver
 sudo update-rc.d vncserver defaults
 
 echo "install.sh copiando archivo ~/.config/autostart/mercurio.desktop..."
+sudo mkdir ~/.config/autostart
 sudo cp mercurio.desktop ~/.config/autostart/mercurio.desktop
 sudo chmod +x ~/.config/autostart/mercurio.desktop
 
 echo "install.sh copiando archivo /root/mercurio-server/mercurio-server-nodejs.sh..."
-sudo mercurio-server-nodejs.sh /root/mercurio-server/mercurio-server-nodejs.sh
+#sudo mercurio-server-nodejs.sh /root/mercurio-server/mercurio-server-nodejs.sh
 sudo chmod +x /root/mercurio-server/mercurio-server-nodejs.sh
 
 vncserver
