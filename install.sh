@@ -27,10 +27,10 @@ sudo cp vncserver /etc/init.d/vncserver
 sudo chmod +x /etc/init.d/vncserver
 sudo update-rc.d vncserver defaults
 
-echo "install.sh copiando archivo /etc/init.d/mercurio..."
-sudo cp vncserver /etc/init.d/mercurio
-sudo chmod +x /etc/init.d/mercurio
-sudo update-rc.d mercurio defaults
+#echo "install.sh copiando archivo /etc/init.d/mercurio..."
+#sudo cp vncserver /etc/init.d/mercurio
+#sudo chmod +x /etc/init.d/mercurio
+#sudo update-rc.d mercurio defaults
 
 vncserver
 
