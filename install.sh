@@ -35,3 +35,5 @@ sudo update-rc.d vncserver defaults
 vncserver
 
 echo "Mercurio dice: Conectar con Vnc Viewer server_ip:5901"
+echo "Atención: VncViewer no conecta cuando el ejecutable vncserver se está ejecutando más de una vez\nRevisar ejecución de vncserver con #pgrep vnc\nCerrar proceso vncserver con kill numero_de_proceso_vncserver"
+echo "Todo el Vnc Server y Client funciona con el puerto 5901. Hay que habititar el puerto 5901 en el firewall del panel del cloud."
