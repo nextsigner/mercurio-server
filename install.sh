@@ -19,6 +19,10 @@ sudo apt-get install -y nodejs
 sudo apt-get install -y npm
 
 echo "install.sh copiando archivo /etc/init.d/vncserver..."
+sudo cp xstartup ~/.vnc/xstartup
+sudo chmod +x ~/.vnc/xstartup
+
+echo "install.sh copiando archivo /etc/init.d/vncserver..."
 sudo cp vncserver /etc/init.d/vncserver
 sudo chmod +x /etc/init.d/vncserver
 sudo update-rc.d vncserver defaults
