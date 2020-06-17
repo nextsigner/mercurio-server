@@ -18,6 +18,8 @@ curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs 
 sudo apt-get install -y npm
 
+npm install
+
 echo "install.sh copiando archivo /etc/init.d/vncserver..."
 sudo cp xstartup ~/.vnc/xstartup
 sudo chmod +x ~/.vnc/xstartup
