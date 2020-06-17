@@ -1,9 +1,12 @@
 #!/bin/bash
+sudo chmod -R 755 .
 sudo mkdir files
 sudo chmod -R 755 files
 
 #Instlando aplicaciones necesarias
 git clone https://github.com/nextsigner/zodiacserver.git
+sudo chmod +x zodiacserver/bin/zodiac_server
+
 
 #Instalando entorno de escritorio y aplicaciones necesarias para zodiacserver
 sudo apt-get install nano xfce4 xfce4-goodies gnome-icon-theme tightvncserver nodejs qtquick1-5-dev qtscript5-dev
