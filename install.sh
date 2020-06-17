@@ -3,6 +3,9 @@ sudo chmod -R 755 .
 sudo mkdir files
 sudo chmod -R 755 files
 
+sudo mkdir cns
+sudo chmod -R 755 cns
+
 #Instlando aplicaciones necesarias
 git clone https://github.com/nextsigner/zodiacserver.git
 sudo chmod +x zodiacserver/bin/zodiac_server
