@@ -12,7 +12,7 @@ sudo chmod +x zodiacserver/bin/zodiac_server
 
 
 #Instalando entorno de escritorio y aplicaciones necesarias para zodiacserver
-sudo apt-get install nano xfce4 xfce4-goodies gnome-icon-theme tightvncserver nodejs qtquick1-5-dev qtscript5-dev
+sudo apt-get install -y nano xfce4 xfce4-goodies gnome-icon-theme tightvncserver nodejs qtquick1-5-dev qtscript5-dev
 
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs 
