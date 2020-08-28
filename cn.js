@@ -11,6 +11,7 @@ module.exports=function(app){
         TimeConversions, WorldTimezoneRepository,
         ZodiacFactory, GeodeticLocation, HouseSystemType,
         RetrogradesService} = require("@goldenius/hades-js");
+    var dateH
     const moment = require('moment-timezone');
 
     let timeConversions = new TimeConversions();
@@ -32,7 +33,7 @@ module.exports=function(app){
 
     function testPlanetCalculation()
     {
-        return astrologyService.CalculateCelestialBodiesAndTime(date, timezone, location);
+        return astrologyService.CalculateCelestialBodiesAndTime(dateH, timezone, location);
     }
 
     function testAspects(celestialBodies)
@@ -105,7 +106,7 @@ module.exports=function(app){
 
 
         let location = new GeodeticLocation(''+lon,''+lat);
-        let dateH = moment(''+anio+'-'+mes+'-'+dia+' '+hora+':'+minutos+':00');
+        dateH = moment(''+anio+'-'+mes+'-'+dia+' '+hora+':'+minutos+':00');
         let timezone = 'America/Argentina/Buenos_Aires';
 
         let celestialBodiesAndTime = testPlanetCalculation();
