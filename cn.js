@@ -45,7 +45,7 @@ module.exports=function(app){
 
     function testHouseCalculation(houseSystemType)
     {
-        return astrologyService.CalculateHouseSystem(houseSystemType, date, timezone, location);
+        return astrologyService.CalculateHouseSystem(houseSystemType, dateH, timezone, location);
     }
     //<--Hades
 
