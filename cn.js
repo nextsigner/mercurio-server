@@ -115,25 +115,33 @@ module.exports=function(app){
         let calculatedAspects = testAspects(celestialBodiesAndTime.CelestialBodies);
         let calculatedHouses = testHouseCalculation(HouseSystemType.Placidus);
 
-        console.log(JSON.stringify(celestialBodiesAndTime));
-        console.log(JSON.stringify(calculatedAspects));
-        console.log(JSON.stringify(calculatedHouses));
+        //console.log(JSON.stringify(celestialBodiesAndTime));
+        //console.log(JSON.stringify(calculatedAspects));
+        //console.log(JSON.stringify(calculatedHouses));
 
         let dtf=new Date(Date.now())
         jsonHades='/tmp/'+dtf.getTime()+'.json'
 
-        let fullData=JSON.stringify(celestialBodiesAndTime)
-        fullData+=JSON.stringify(calculatedAspects)
-        fullData+=JSON.stringify(calculatedHouses)
+        let fullData='{'
+        fullData+='"Cuerpos":'+JSON.stringify(celestialBodiesAndTime)
+        fullData+=','
+        fullData+='"Aspectos":'+JSON.stringify(calculatedAspects)
+        fullData+=','
+        fullData+='"Casas":'+JSON.stringify(calculatedHouses)
+        fullData+='}'
         fs.writeFile(jsonHades, fullData, (err) => {
                          // throws an error, you could also catch it here
                          if (err) throw err;
 
                          // success case, the file was saved
-                         console.log('jsonHades: '+jsonHades);
+                         //console.log('jsonHades: '+jsonHades);
+
+                         //RETORNANDO PARA DEPURACION
+                         //DESACTIVAR ESTE RETORNO PARA QUE EJECUTE ZODIACSERVER
+                         //return
 
                          //-->Spawn zodiacserver
-                         cp = spawn('/root/mercurio-server/zodiacserver/bin/zodiac_server', [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms, '10', '/root/mercurio-server/files/'+ms+'_'+v1+'.png', '5120x2880']);
+                         cp = spawn('/root/mercurio-server/zodiacserver/bin/zodiac_server', [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms, '10', '/root/mercurio-server/files/'+ms+'_'+v1+'.png', '5120x2880', jsonHades]);
                          cp.stdout.on("data", function(data) {
                              if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
                                  console.log('Sistema Mercurio: '+data.toString());
@@ -155,7 +163,7 @@ module.exports=function(app){
                                  res.status(200).send(o)
                              }
                          });
-                         setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9)
+                         //setAndSendEmail(v1, v2, v3, v4, v5, v6, v7, v8, v9)
                          //<--Spawn zodiacserver
                      });
         //<---Hades
