@@ -11,6 +11,7 @@ module.exports=function(app){
         TimeConversions, WorldTimezoneRepository,
         ZodiacFactory, GeodeticLocation, HouseSystemType,
         RetrogradesService} = require("@goldenius/hades-js");
+    var location
     var dateH
     var timezone
     const moment = require('moment-timezone');
@@ -106,7 +107,7 @@ module.exports=function(app){
 
 
 
-        let location = new GeodeticLocation(''+lon,''+lat);
+        location = new GeodeticLocation(''+lon,''+lat);
         dateH = moment(''+anio+'-'+mes+'-'+dia+' '+hora+':'+minutos+':00');
         timezone = 'America/Argentina/Buenos_Aires';
 
