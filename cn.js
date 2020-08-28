@@ -69,11 +69,11 @@ module.exports=function(app){
         let o={'file':''+ms+'_'+v1}
 
         //-->Hades
-        var dia = v3
-        var mes = v2
-        var anio = v1
-        var hora = v4
-        var minutos = v5
+        var dia = v4
+        var mes = v3
+        var anio = v2
+        var hora = v5
+        var minutos = v6
         var lat = v8//parseFloat(v8)
         var lon = v9//parseFloat(v9)
         console.log("Calculando Carta Natal ..."+dia+"/"+mes+"/"+anio+" "+hora+":"+minutos+"hs lat:"+lat+" lon:"+lon)
