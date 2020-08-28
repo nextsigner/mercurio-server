@@ -5,6 +5,30 @@ module.exports=function(app){
     // write to a new file named 2pac.txt
     const fs = require('fs');
 
+    const {AstrologyService, AspectService,
+        EphemerisJSONRepository, OrbJSONRepository,
+        TrigonometricUtilities,HouseSystemFactory,
+        TimeConversions, WorldTimezoneRepository,
+        ZodiacFactory, GeodeticLocation, HouseSystemType,
+        RetrogradesService} = require("@goldenius/hades-js");
+    const moment = require('moment-timezone');
+
+    let timeConversions = new TimeConversions();
+    let retrogradesService = new RetrogradesService();
+    let ephemerisJSONRepository = new EphemerisJSONRepository(timeConversions,retrogradesService);
+    let worldTimezoneRepository = new WorldTimezoneRepository();
+    let orbRepository = new OrbJSONRepository();
+    let aspectService = new AspectService(orbRepository);
+    let trigonometricUtilities = new TrigonometricUtilities();
+    let zodiacFactory = new ZodiacFactory();
+    let houseSystemFactory = new HouseSystemFactory(trigonometricUtilities,zodiacFactory);
+
+
+    let astrologyService = new AstrologyService(ephemerisJSONRepository,
+                                                timeConversions,
+                                                worldTimezoneRepository,
+                                                aspectService,
+                                                houseSystemFactory);
 
     function testPlanetCalculation()
     {
@@ -78,30 +102,7 @@ module.exports=function(app){
         var lon = v9//parseFloat(v9)
         console.log("Calculando Carta Natal ..."+dia+"/"+mes+"/"+anio+" "+hora+":"+minutos+"hs lat:"+lat+" lon:"+lon)
 
-        const {AstrologyService, AspectService,
-            EphemerisJSONRepository, OrbJSONRepository,
-            TrigonometricUtilities,HouseSystemFactory,
-            TimeConversions, WorldTimezoneRepository,
-            ZodiacFactory, GeodeticLocation, HouseSystemType,
-            RetrogradesService} = require("@goldenius/hades-js");
-        const moment = require('moment-timezone');
 
-        let timeConversions = new TimeConversions();
-        let retrogradesService = new RetrogradesService();
-        let ephemerisJSONRepository = new EphemerisJSONRepository(timeConversions,retrogradesService);
-        let worldTimezoneRepository = new WorldTimezoneRepository();
-        let orbRepository = new OrbJSONRepository();
-        let aspectService = new AspectService(orbRepository);
-        let trigonometricUtilities = new TrigonometricUtilities();
-        let zodiacFactory = new ZodiacFactory();
-        let houseSystemFactory = new HouseSystemFactory(trigonometricUtilities,zodiacFactory);
-
-
-        let astrologyService = new AstrologyService(ephemerisJSONRepository,
-                                                    timeConversions,
-                                                    worldTimezoneRepository,
-                                                    aspectService,
-                                                    houseSystemFactory);
 
         let location = new GeodeticLocation(''+lon,''+lat);
         let dateH = moment(''+anio+'-'+mes+'-'+dia+' '+hora+':'+minutos+':00');
