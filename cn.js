@@ -12,6 +12,7 @@ module.exports=function(app){
         ZodiacFactory, GeodeticLocation, HouseSystemType,
         RetrogradesService} = require("@goldenius/hades-js");
     var dateH
+    var timezone
     const moment = require('moment-timezone');
 
     let timeConversions = new TimeConversions();
@@ -107,7 +108,7 @@ module.exports=function(app){
 
         let location = new GeodeticLocation(''+lon,''+lat);
         dateH = moment(''+anio+'-'+mes+'-'+dia+' '+hora+':'+minutos+':00');
-        let timezone = 'America/Argentina/Buenos_Aires';
+        timezone = 'America/Argentina/Buenos_Aires';
 
         let celestialBodiesAndTime = testPlanetCalculation();
         let calculatedAspects = testAspects(celestialBodiesAndTime.CelestialBodies);
