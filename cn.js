@@ -109,7 +109,7 @@ module.exports=function(app){
 
         location = new GeodeticLocation(''+lon,''+lat);
         dateH = moment(''+anio+'-'+mes+'-'+dia+' '+hora+':'+minutos+':00');
-        timezone = 'America/Argentina/Buenos_Aires';
+        timezone = 'America/Argentina/Mendoza';
 
         let celestialBodiesAndTime = testPlanetCalculation();
         let calculatedAspects = testAspects(celestialBodiesAndTime.CelestialBodies);
@@ -134,14 +134,18 @@ module.exports=function(app){
                          if (err) throw err;
 
                          // success case, the file was saved
-                         //console.log('jsonHades: '+jsonHades);
+                         console.log('jsonHades: '+jsonHades);
 
                          //RETORNANDO PARA DEPURACION
                          //DESACTIVAR ESTE RETORNO PARA QUE EJECUTE ZODIACSERVER
                          //return
 
                          //-->Spawn zodiacserver
-                         cp = spawn('/root/mercurio-server/zodiacserver/bin/zodiac_server', [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms, '10', '/root/mercurio-server/files/'+ms+'_'+v1+'.png', '5120x2880', jsonHades]);
+                         let zsLoc='/media/nextsigner/ZONA-A12/nsp/unik-dev-apps/zodiacserver/bin/zodiac_server'
+                          //let zsLoc='/root/mercurio-server/zodiacserver/bin/zodiac_server'
+                         let filesLoc='/media/nextsigner/ZONA-A12/nsp/unik-dev-apps/mercurio/mercurio-server'
+                         //let filesLoc='/root/mercurio-server'
+                         cp = spawn(zsLoc, [v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, fn, ms, '10', filesLoc+'/files/'+ms+'_'+v1+'.png', '5120x2880', jsonHades]);
                          cp.stdout.on("data", function(data) {
                              if(data.toString().trim().indexOf('AppSettings: saved to')>=0){
                                  console.log('Sistema Mercurio: '+data.toString());
